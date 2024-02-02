@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    {% block style %}
+    {% endblock %}
+    
+    <title>
+        {% block title%}
+        {% endblock%}
+    </title>
+</head>
+<body>
+    <div class="header"> 
+
+        {% if user.is_authenticated%}
+            <a href="{% url 'task_route'%}">My Tasks</a>
+            <a href="{% url 'logout'%}">Logout</a>
+            <p> Welcome {{name}}</p>
+            <div>
+                <img src="https://res.cloudinary.com/dgpnmwhra/image/upload/v1674042300/neutron_images/base_photo_rqyzlb.png", width="50px">
+            </div>
+        {% else %}
+            <a href="{% url 'signin'%}">signin</a> 
+            <a href="{% url 'signup'%}">Create Account</a>
+        {% endif %}
+        
+    </div>
+    <div class="px-6 py-6">
+        {% block content%}
+        {% endblock %}
+    </div>
+</body>
+</html>
