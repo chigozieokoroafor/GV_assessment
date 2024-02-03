@@ -9,59 +9,43 @@
 {% endblock%}
 
 {% block content%}
-    <div class = "w-1/2 my-6 mx-auto bg-gray-100 rounded-xl"> 
+<div class = "tab-content" id="signup">
+    <div class="container tab-pane active"> 
         <h1 class="mb-6 text-3xl"> Sign Up</h1>
-        
+        <div> 
+            {% for message in messages %}
+            <div class="alert alert-success  alert-dismissible fade show">
+                <strong>{{message}}</strong>
+            </div>
+            {% endfor %}
+        </div>
+
         <form method="post" action = "."> 
             {% csrf_token %}
-            <div class="container">
-                <label for="uname"><strong>Username</strong></label><br>
-                <input type="text" placeholder="Enter Username" name="username" required><br>
-                <label for="psw"><strong>Password</strong></label><br>
-                <input type="password" placeholder="Enter Password" name="password1" required><br>
-                <label for="psw"><strong>Confirm Password</strong></label><br>
-                <input type="password" placeholder="Confirm Password" name="password2" required><br>
-            </div>
-            <button type="submit">Create Account</button>
             
-            <div> 
-                {% for message in messages %}
-                <h3> {{message}} </h3>
-                {% endfor %}
+            <div class="mb-3 mt-3">
+                <label for="uname" class="form-label">Username:</label>
+                <input type="text" class="form-control" id="uname" placeholder="Enter username" name="username" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
             </div>
-
-
-            {% comment %} {{form.as_p}} {% endcomment %}
+            <div class="mb-3">
+                <label for="pwd" class="form-label">Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password1" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+            <div class="mb-3">
+                <label for="pwd" class="form-label">Confirm Password:</label>
+                <input type="password" class="form-control" id="pwd" placeholder="Confirm password" name="password2" required>
+                <div class="valid-feedback">Valid.</div>
+                <div class="invalid-feedback">Please fill out this field.</div>
+            </div>
+                
+            <button type="submit" class="btn btn-primary">SignIn</button>
             
-
-                {% comment %} <div class="mb-3"> 
-                    <label class="inline-block mb-2"> Username</label> <br>
-                    {{form.username}}
-                    <input>
-                </div>
-
-                <div class="mb-3"> 
-                    <label class="inline-block mb-2"> Password</label><br>
-                    {{form.password1}}
-                </div>
-
-                <div class="mb-3"> 
-                    <label class="inline-block mb-2"> Confirm Password</label><br>
-                    {{form.password2}}
-                </div>
-
-                {% if form.errors or from.non_field_errors %}
-                    <div class="mb-3 p-6 bg-red-100 rounded-xl">
-                        {% for error in form %}
-                            {{error.errors}}
-                        {% endfor %}
-                        {{ from.non_field_errors }}
-                    </div>
-                {% endif %} {% endcomment %}
-
-
-
-            {% comment %} <button class = "py-4 px-8 text-lg bg-teal-500 bg-teal-700 rounded-xl text-white"> Submit </button> {% endcomment %}
+            
         </form>
     </div>
+</div>
 {% endblock %}

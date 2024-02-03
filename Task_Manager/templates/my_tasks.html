@@ -178,6 +178,7 @@
 
 
 {% block content %}
+
 <div class="row d-flex justify-content-center container">
     <div class="col-md-8">
       <div class="card-hover-shadow-2x mb-3 card">
@@ -200,8 +201,9 @@
                         <div class="widget-content p-0">
                           <div class="widget-content-wrapper">
                             <div class="widget-content-left mr-2">
-                              <div class="custom-checkbox custom-control"><input class="custom-control-input" id="exampleCustomCheckbox10"
-                                  type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox10">&nbsp;</label></div>
+                              {% comment %} <div class="custom-checkbox custom-control"><input class="custom-control-input" id="exampleCustomCheckbox10"
+                                  type="checkbox"><label class="custom-control-label" for="exampleCustomCheckbox10">&nbsp;</label>
+                                </div> {% endcomment %}
                             </div>
                             <div class="widget-content-left flex2">
                               <div class="widget-heading">{{task.title }}</div>
@@ -210,11 +212,24 @@
                               <div class="widget-subheading">description: {{task.description}}</div>
 
                             </div>
-                      
-                            <div class="widget-content-right">
-                              <a href="{% url 'delete_task' task.id %}"> Delete </a>
+                            
+
+                            
+                              <ul class="nav justify-content-end">
+                                <li class="nav-item mx-2">
+                                  <a href="{% url 'delete_task' task.id %}" class="btn btn-danger"> Delete </a>
+                                </li>
+                                <li class="nav-item mx-2">
+                                  <a href="{% url 'completed' task.id %}" class="btn btn-success"> Complete </a>
+                                </li>
+                                <li class="nav-item mx-2">
+                                  <a href= "{% url 'spec_task' task.id%}" class="btn btn-secondary"> UPDATE </a>
+                                </li>
+                                
+                              </ul> 
+                              {% comment %} <a href="{% url 'delete_task' task.id %}"> Delete </a>
                               <a href="{% url 'completed' task.id %}"> Mark as completed </a>
-                              <a href= "{% url 'spec_task' task.id%}"> UPDATE </a>
+                              <a href= "{% url 'spec_task' task.id%}"> UPDATE </a> {% endcomment %}
                             
                               {% comment %} <button class="border-0 btn-transition btn btn-outline-success">
                                 <i class="fa fa-check"></i></button>
@@ -222,7 +237,7 @@
                                 <i class="fa fa-trash"></i>
                               </button> {% endcomment %}
 
-                            </div>
+                            
                           </div>
                         </div>
                       
@@ -237,7 +252,7 @@
           </perfect-scrollbar>
         </div>
         <div class="d-block text-right card-footer">
-          <a href="{% url 'upload_task' %}"> Add New Tasks</a>
+          <a href="{% url 'upload_task' %}" class="btn btn-primary"> Add New Tasks</a>
           
       </div>
     </div>

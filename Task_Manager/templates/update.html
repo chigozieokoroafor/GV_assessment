@@ -1,17 +1,19 @@
 {% extends "base.html"%}
 
 {% block content %}
-<div class = "w-1/2 my-6 mx-auto bg-gray-100 rounded-xl"> 
+<div class = "row d-flex justify-content-center"> 
     <h1 class="mb-6 text-3xl"> Update tasks</h1>
     
     <form method="PUT" action = "{% url 'spec_task' task.id%}"> 
         {% csrf_token %}
-        <div class="container">
-            <input type="text" placeholder="title" name="title" value="{{task.title}}"> <br>
-            <input type="text" placeholder="Enter Description of task" name="description" value="{{task.description}}"> <br>
-            <input type="date" placeholder="Completion Date" name="due_date" value="{{due_date}}"><br>
+        
+
+        <div class="container-fluid">
+            <input type="text" class="form-control" placeholder="title" name="title" value="{{task.title}}"> <br>
+            <input type="text" class="form-control" placeholder="Enter Description of task" name="description" value="{{task.description}}"> <br>
+            <input type="date" class="form-control" placeholder="Completion Date" name="due_date" value="{{due_date}}"><br>
         </div>
-        <button type="submit">Update</button> 
+        <button type="submit" class="btn btn-primary">Update</button> 
         <div> 
             {% for message in messages %}
             <h3> {{message}} </h3>

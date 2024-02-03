@@ -13,4 +13,7 @@ class Task(models.Model):
     status = models.CharField(max_length=15, choices=StatusChoices.choices, default = "pending" )
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
 
+    class Meta:
+        ordering = ["-status", "-due_date"]
+
 
