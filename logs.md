@@ -12,9 +12,9 @@ todo
     d. update existing tasks
     e. delete current task
 
-4. task management features cannot be used by non authorized users.
-5. only homepage which is the base page can be viewed by unauthorized users.
-6. Create something simple.
+4. task management features cannot be used by non authorized users. -> done
+5. only homepage which is the base page can be viewed by unauthorized users. -> done
+6. Create something simple. -> done
 7. Write unit tests for authentication and handling tasks
 
 

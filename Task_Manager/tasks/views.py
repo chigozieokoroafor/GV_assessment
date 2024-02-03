@@ -13,7 +13,7 @@ def index(request):
     return render(request, "base.html")
 
 def home(request):
-    return  render(request, "home.html")
+    return redirect("task_route")
 
 @login_required
 def my_task(request):
