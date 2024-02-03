@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class = "w-1/2 my-6 mx-auto bg-gray-100 rounded-xl"> 
+    <h1 class="mb-6 text-3xl"> Add tasks</h1>
+    
+    <form method="post" action = "{% url 'upload_task'%}"> 
+        {% csrf_token %}
+        <div class="container">
+            <input type="text" placeholder="title" name="title" required> <br>
+            
+            <input type="text" placeholder="Enter Description of task" name="description"> <br>
+            <input type="date" placeholder="Completion Date" name="due_date" required> <br>
+
+        </div>
+        <button type="submit">Add task</button>
+        <div> 
+            {% for message in messages %}
+            <h3> {{message}} </h3>
+            {% endfor %}
+        </div>
+
+        
+    </form>
+</div>
+{% endblock%}

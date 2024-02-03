@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
@@ -15,13 +15,13 @@ def signup(request):
         if password == confirm_password:
             if User.objects.filter(username=username).exists():
                 messages.info(request, "Username exists")
-                return redirect("/auth/signup")
+                return redirect("signup")
             user = User.objects.create_user(username=username, password=password)
             user.save()
-            return redirect("/auth/signin")
+            return redirect("signin")
         else:
             messages.info(request, "Password doesn't match")
-            return redirect("/auth/signup")
+            return redirect("signin")
 
     return render(request, "signup.html")
 
@@ -32,14 +32,16 @@ def signin(request):
         user = authenticate(request,username=username, password = password)
         if user is not None:
             login(request, user)
-            return redirect("/tasks")
+            
+            
+            return redirect("task_route")
         else:
             messages.info(request, "Invalid credentials")
-            return redirect("/auth/signin")
+            return redirect("signin")
 
 
     return render(request, "signin.html")
 
 def loguser_out(request):
     logout(request)
-    return redirect("/auth/signin")
+    return redirect("signin")

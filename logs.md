@@ -19,6 +19,8 @@ todo
 
 
 Homepage: chould contain profile_url, signin, signup, my_tasks
+use bootstrap for all the styling and clear out initial styling
+change all the tasks to links for them to be clicked on
 
 
 
