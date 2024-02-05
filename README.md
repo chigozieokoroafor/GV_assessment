@@ -1,5 +1,5 @@
 This readme file contains a breif description of how the Task Management works.
-Although there currently isn't a link to the hosted version due to some technical challenges.
+Although there currently isn't a link to the hosted version due to some challenges while trying to deploy on render.
 
 To run the application,
 
