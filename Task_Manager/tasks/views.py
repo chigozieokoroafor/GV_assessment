@@ -33,10 +33,14 @@ def my_task(request):
 @login_required
 def spec_task(request, pk):
     task =  Task.objects.get(pk=pk)
-    if request.method == "PUT":
-        task.completed = True
+    if request.method == "POST":
+        
+        task.title =  request.POST["title"]
+        task.description =  request.POST["description"]
+        task.due_date =  request.POST["due_date"]
+        
         task.save()
-        return redirect
+        return redirect("task_route")
     
     return render(request, "update.html", {
         "task":task,

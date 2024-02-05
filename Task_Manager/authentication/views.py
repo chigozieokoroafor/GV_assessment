@@ -33,7 +33,6 @@ def signin(request):
         if user is not None:
             login(request, user)
             
-            
             return redirect("task_route")
         else:
             messages.info(request, "Invalid credentials")
